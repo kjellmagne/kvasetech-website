@@ -166,14 +166,19 @@
     .dot-grid span:nth-child(3n) { background: var(--leaf); transform: translateZ(45px) scale(0.72); }
     .dot-grid span:nth-child(4n) { background: var(--mint); transform: translateZ(60px) scale(1.22); }
 
-    .showcase-track { width: max-content; will-change: transform; }
+    .showcase-track {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      will-change: transform;
+    }
     .showcase-panel {
-      width: min(76vw, 58rem);
+      width: 100%;
       min-height: 32rem;
       border: 1px solid rgba(7, 16, 17, 0.12);
       background: rgba(255, 255, 255, 0.88);
       box-shadow: 0 24px 70px rgba(7, 16, 17, 0.08);
-      transform: scale(0.9);
+      transform: none;
     }
 
     .project-graphic {
@@ -197,10 +202,12 @@
     .project-graphic .thin { stroke-width: 3; }
 
     .project-title {
-      font-size: clamp(2.65rem, 5vw, 4.5rem);
-      line-height: 0.96;
-      overflow-wrap: anywhere;
-      hyphens: auto;
+      font-size: clamp(2.05rem, 3vw, 3.35rem);
+      line-height: 1.02;
+      text-wrap: balance;
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: manual;
     }
 
     .manifest-char {
@@ -209,19 +216,27 @@
       transform: translateY(0.4em);
       will-change: transform, opacity;
     }
+    .manifest-word {
+      display: inline-block;
+      white-space: nowrap;
+    }
 
     .reveal, .section-curtain { will-change: transform, opacity; }
     .section-curtain { transform-origin: left center; }
 
     @media (max-width: 767px) {
       .hero-mask > span { transform: none; }
-      .showcase-track { width: 100%; transform: none !important; }
+      .showcase-track { grid-template-columns: 1fr; width: 100%; transform: none !important; }
       .showcase-panel { width: 100%; min-height: auto; transform: none !important; }
       .project-graphic { height: 10rem; }
-      .project-title { font-size: clamp(2.45rem, 10.5vw, 3rem); }
+      .project-title { font-size: clamp(2.15rem, 8vw, 2.55rem); line-height: 1.04; }
       .site-footer { align-items: flex-start; flex-direction: column; }
       .site-footer-links { justify-content: flex-start; margin-left: 0; }
       .service-card { min-height: auto; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1170px) {
+      .showcase-track { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -336,10 +351,10 @@
       <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.4fr]">
         <p class="reveal text-sm font-extrabold uppercase text-cyan">Måten vi arbeider på</p>
         <div>
-          <h2 class="manifest-text font-display text-[clamp(2.6rem,6vw,6.9rem)] font-bold leading-[0.98]" aria-label="Vi bygger løsninger som tåler hverdagen — tydelig arkitektur, trygg drift og programvare folk faktisk bruker">
-            Vi bygger løsninger som tåler hverdagen — tydelig arkitektur, trygg drift og programvare folk faktisk bruker.
+          <h2 class="manifest-text font-display text-[clamp(2.6rem,6vw,6.9rem)] font-bold leading-[0.98]" aria-label="Klare valg. Solid kode. Trygg drift.">
+            Klare valg. Solid kode. Trygg drift.
           </h2>
-          <p class="reveal mt-8 max-w-2xl text-lg leading-8 text-ink/68">Vi hjelper norske virksomheter med å gå fra uklare behov til solide digitale tjenester. Rådgivning, utvikling og hosting — levert samlet, slik at teknologien henger sammen fra første dag til stabil drift.</p>
+          <p class="reveal mt-8 max-w-2xl text-lg leading-8 text-ink/68">Vi hjelper norske virksomheter fra uklare behov til digitale tjenester som er enkle å forstå, videreutvikle og drifte.</p>
         </div>
       </div>
     </section>
@@ -566,7 +581,7 @@
         </div>
       </div>
 
-      <div class="showcase-track flex gap-5 md:gap-8">
+      <div class="showcase-track gap-5 md:gap-8">
         <article class="showcase-panel reveal flex shrink-0 flex-col justify-between rounded-[1.8rem] p-8 md:p-10">
           <div>
             <div class="project-graphic mb-8 flex items-center justify-center px-8">
@@ -708,7 +723,10 @@
       // Manifest reveal: wraps each character and brightens it in sequence while the line scrolls in.
       document.querySelectorAll('.manifest-text').forEach((el) => {
         const text = el.textContent.trim();
-        el.innerHTML = text.split('').map((char) => '<span class="manifest-char">' + (char === ' ' ? '&nbsp;' : char) + '</span>').join('');
+        el.innerHTML = text.split(' ').map((word) => {
+          const chars = word.split('').map((char) => '<span class="manifest-char">' + char + '</span>').join('');
+          return '<span class="manifest-word">' + chars + '</span>';
+        }).join(' ');
         gsap.to(el.querySelectorAll('.manifest-char'), {
           y: 0,
           opacity: 1,
@@ -735,30 +753,6 @@
           y: () => -window.innerHeight * 0.08,
           ease: 'none',
           scrollTrigger: { trigger: '#top > section', start: 'top top', end: 'bottom top', scrub: true }
-        });
-
-        // Showcase pin: desktop turns the product panels into a horizontal scroll strip with zoom reveals.
-        const track = document.querySelector('.showcase-track');
-        const panels = gsap.utils.toArray('.showcase-panel');
-        const horizontalTween = gsap.to(track, {
-          x: () => -(track.scrollWidth - window.innerWidth + 40),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.showcase-section',
-            start: 'top top',
-            end: () => '+=' + Math.max(track.scrollWidth - window.innerWidth, 900),
-            scrub: true,
-            pin: true,
-            invalidateOnRefresh: true
-          }
-        });
-        panels.forEach((panel) => {
-          gsap.to(panel, {
-            scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: panel, containerAnimation: horizontalTween, start: 'left 82%', end: 'left 45%', scrub: true }
-          });
         });
 
         // Social proof parallax: the symbol moves at a restrained depth behind the quote card.
