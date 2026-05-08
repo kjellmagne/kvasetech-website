@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
+  <title>Kvasetech AS | Rådgivning, programvare og hosting</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kvasetech.no">
+  <meta property="og:title" content="Kvasetech AS | Rådgivning, programvare og hosting">
+  <meta property="og:description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kvasetech AS | Rådgivning, programvare og hosting">
+  <meta name="twitter:description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#071011',
+            paper: '#F6F5EF',
+            cyan: '#17B8D0',
+            leaf: '#9DBB43',
+            mint: '#58BEAE',
+            mist: '#DDEDEA'
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --ink: #071011;
+      --paper: #FBFAF5;
+      --cyan: #17B8D0;
+      --leaf: #9DBB43;
+      --mint: #58BEAE;
+      --mist: #EAF6F3;
+      --line: rgba(7, 16, 17, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #ffffff 0%, var(--paper) 42%, #f4faf8 100%);
+      color: var(--ink);
+      font-family: Inter, system-ui, sans-serif;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    body::selection { background: var(--cyan); color: var(--ink); }
+
+    a, button { transition: transform 0.3s ease-out, color 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out, opacity 0.3s ease-out; }
+    a:hover, button:hover { transform: scale(1.02); }
+
+    .font-display { font-family: 'Playfair Display', serif; }
+    header img { filter: none !important; }
+    .site-footer img { filter: brightness(0) invert(1) !important; }
+    .site-footer {
+      align-items: center;
+      color: rgba(246, 245, 239, 0.78);
+      flex-direction: row;
+    }
+    .site-footer a { color: rgba(246, 245, 239, 0.78); }
+    .site-footer a:hover { color: var(--cyan); }
+    .site-footer img { flex: 0 0 auto; width: auto; }
+    .site-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+    .hero-bg img {
+      opacity: 0.38 !important;
+      filter: saturate(1.12) brightness(1.08) blur(0.6px);
+      animation: hero-drift 28s ease-in-out infinite;
+      will-change: transform;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bg img { animation: none; }
+    }
+    .nav-link, .motion-link { position: relative; display: inline-flex; width: fit-content; align-items: center; gap: 0.45rem; }
+    .nav-link::after, .motion-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.22rem;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-out;
+    }
+    .nav-link:hover::after, .motion-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    .hero-mask { display: block; overflow: hidden; padding-bottom: 0.15em; }
+    .hero-mask > span { display: block; transform: translateY(115%); }
+
+    .kva-frame {
+      border: 1px solid rgba(7, 16, 17, 0.12);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 28px 90px rgba(7, 16, 17, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-object.kva-frame {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .service-card {
+      transform-style: preserve-3d;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 18px 50px rgba(7, 16, 17, 0.06);
+      min-height: 25rem;
+    }
+
+    .service-illustration, .mouse-depth { will-change: transform; }
+    .service-graphic {
+      height: 8rem;
+      width: 100%;
+      border: 1px solid rgba(7, 16, 17, 0.1);
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(234, 246, 243, 0.68));
+      color: var(--ink);
+    }
+    .service-graphic .line {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-graphic .thin { stroke-width: 3; }
+    .service-graphic .soft { fill: currentColor; opacity: 0.09; }
+    .service-graphic .cyan { fill: var(--cyan); }
+    .service-graphic .mint { fill: var(--mint); }
+    .service-graphic .leaf { fill: var(--leaf); }
+    .dot-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.5rem;
+      opacity: 0.95;
+    }
+    .dot-grid span {
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: var(--cyan);
+      transform: translateZ(30px);
+    }
+    .dot-grid span:nth-child(3n) { background: var(--leaf); transform: translateZ(45px) scale(0.72); }
+    .dot-grid span:nth-child(4n) { background: var(--mint); transform: translateZ(60px) scale(1.22); }
+
+    .showcase-track { width: max-content; will-change: transform; }
+    .showcase-panel {
+      width: min(76vw, 58rem);
+      min-height: 32rem;
+      border: 1px solid rgba(7, 16, 17, 0.12);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 24px 70px rgba(7, 16, 17, 0.08);
+      transform: scale(0.9);
+    }
+
+    .project-graphic {
+      height: 11rem;
+      width: 100%;
+      border: 1px solid rgba(7, 16, 17, 0.1);
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(234, 246, 243, 0.72));
+      color: var(--ink);
+    }
+
+    .project-graphic .soft { opacity: 0.11; }
+    .project-graphic .mid { opacity: 0.28; }
+    .project-graphic .line {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .project-graphic .thin { stroke-width: 3; }
+
+    .project-title {
+      font-size: clamp(2.65rem, 5vw, 4.5rem);
+      line-height: 0.96;
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    .manifest-char {
+      display: inline-block;
+      opacity: 0.18;
+      transform: translateY(0.4em);
+      will-change: transform, opacity;
+    }
+
+    .reveal, .section-curtain { will-change: transform, opacity; }
+    .section-curtain { transform-origin: left center; }
+
+    @media (max-width: 767px) {
+      .hero-mask > span { transform: none; }
+      .showcase-track { width: 100%; transform: none !important; }
+      .showcase-panel { width: 100%; min-height: auto; transform: none !important; }
+      .project-graphic { height: 10rem; }
+      .project-title { font-size: clamp(2.45rem, 10.5vw, 3rem); }
+      .site-footer { align-items: flex-start; flex-direction: column; }
+      .site-footer-links { justify-content: flex-start; margin-left: 0; }
+      .service-card { min-height: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+      .hero-mask > span, .manifest-char, .reveal, .showcase-panel, .showcase-track, .mouse-depth, .service-illustration {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+    /* Mobile menu */
+    .mobile-menu-closed { opacity: 0; pointer-events: none; transform: translateY(-1rem); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+    .mobile-menu-open   { opacity: 1; pointer-events: auto; transform: translateY(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+    .menu-open .menu-bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-open .menu-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-open .menu-bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    /* Skip link */
+    .skip-link { position: absolute; left: -9999px; top: 1rem; z-index: 9999; padding: 0.5rem 1rem; background: var(--cyan); color: var(--ink); font-weight: 700; border-radius: 999px; font-size: 0.875rem; }
+    .skip-link:focus { left: 1rem; }
+    /* Contact form */
+    .contact-form input, .contact-form textarea { width: 100%; padding: 0.875rem 1.25rem; border: 1px solid rgba(7,16,17,0.14); border-radius: 1rem; background: rgba(255,255,255,0.82); color: var(--ink); font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(23,184,208,0.18); }
+    .contact-form textarea { resize: vertical; min-height: 9rem; }
+    @keyframes hero-drift {
+      0%   { transform: scale(1.06) translate(0%,    0%);    }
+      33%  { transform: scale(1.10) translate(-0.9%, 0.6%);  }
+      66%  { transform: scale(1.08) translate(0.6%,  -0.4%); }
+      100% { transform: scale(1.06) translate(0%,    0%);    }
+    }
+    @keyframes logo-float {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50%       { transform: translateY(-18px) rotate(1deg); }
+    }
+    .logo-float {
+      animation: logo-float 6s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-float { animation: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kvasetech AS",
+    "url": "https://kvasetech.no",
+    "email": "post@kvasetech.no",
+    "description": "Kvasetech AS leverer rådgivning, programvareutvikling, hosting og produktinnovasjon for virksomheter som vil eie teknologien sin.",
+    "areaServed": "NO",
+    "serviceType": ["Teknologirådgivning", "Programvareutvikling", "Hosting og drift", "Produktinnovasjon"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#top">Hopp til innhold</a>
+  <header class="fixed left-0 top-0 z-50 w-full bg-white/78 px-5 py-4 backdrop-blur-xl md:px-8" aria-label="Hovednavigasjon">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between text-ink">
+      <a href="#top" class="flex items-center gap-3" aria-label="Kvasetech hjem">
+        <img src="assets/logo.png" alt="Kvasetech" class="h-8 w-auto brightness-0 invert md:h-10">
+      </a>
+      <div class="hidden items-center gap-7 text-sm font-semibold uppercase md:flex">
+        <a class="nav-link" href="#tjenester">Tjenester</a>
+        <a class="nav-link" href="#arbeid">Portefølje</a>
+        <a class="nav-link" href="#kontakt">Kontakt</a>
+      </div>
+      <button id="menu-btn" class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center gap-[6px] md:hidden" aria-label="Åpne meny" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-bar block h-[2px] w-6 rounded-full bg-ink transition-all duration-300 ease-out"></span>
+        <span class="menu-bar block h-[2px] w-6 rounded-full bg-ink transition-all duration-300 ease-out"></span>
+        <span class="menu-bar block h-[2px] w-6 rounded-full bg-ink transition-all duration-300 ease-out"></span>
+      </button>
+    </nav>
+  </header>
+  <div id="mobile-menu" class="mobile-menu-closed fixed inset-0 z-[55] flex flex-col items-center justify-center gap-8 bg-white/98 backdrop-blur-2xl md:hidden" aria-hidden="true">
+      <a class="nav-link text-3xl font-bold uppercase tracking-tight text-ink" href="#tjenester">Tjenester</a>
+      <a class="nav-link text-3xl font-bold uppercase tracking-tight text-ink" href="#arbeid">Portefølje</a>
+      <a class="nav-link text-3xl font-bold uppercase tracking-tight text-ink" href="#kontakt">Kontakt</a>
+    </div>
+  <main id="top">
+    <section class="relative min-h-screen overflow-hidden bg-white text-ink">
+      <div class="hero-bg absolute inset-0 z-0">
+        <img src="assets/hero-bg.avif" alt="Abstrakt teknologisk flate" class="h-[120%] w-full object-cover opacity-45" decoding="async">
+      </div>
+      <div class="absolute inset-0 z-10" style="background: radial-gradient(circle at 76% 20%, rgba(23,184,208,0.26), transparent 38%), radial-gradient(circle at 8% 88%, rgba(157,187,67,0.22), transparent 30%), linear-gradient(90deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.88) 38%, rgba(234,246,243,0.72) 62%, rgba(234,246,243,0.82) 100%)"></div>
+
+      <div class="relative z-20 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-5 pb-10 pt-32 md:grid-cols-[1.1fr_0.9fr] md:px-8 md:pb-16">
+        <div class="hero-copy max-w-5xl pb-8">
+          <p class="reveal mb-6 text-sm font-bold uppercase text-cyan">Rådgivning, utvikling og drift</p>
+          <h1 class="font-display text-[clamp(2.4rem,4.6vw,5.4rem)] font-bold leading-[1.0] text-ink">
+            <span class="hero-mask"><span>Teknologi som</span></span>
+            <span class="hero-mask"><span>gjør arbeidet</span></span>
+            <span class="hero-mask"><span>enklere å eie</span></span>
+          </h1>
+          <div class="hero-cta mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a href="#kontakt" class="inline-flex w-fit items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-extrabold uppercase text-ink shadow-lg shadow-cyan/20 hover:bg-leaf">Kontakt oss</a>
+            <a href="#arbeid" class="motion-link text-sm font-bold uppercase text-ink/76">Se produkter</a>
+          </div>
+        </div>
+
+        <aside class="kva-frame hero-object hidden md:flex md:items-center md:justify-center">
+          <img src="assets/logo-icon.png" alt="" aria-hidden="true"
+            class="logo-float w-[55%] max-w-[14rem] select-none pointer-events-none"
+            style="filter: drop-shadow(0 28px 56px rgba(23,184,208,0.4)) drop-shadow(0 6px 16px rgba(7,16,17,0.08));">
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-curtain bg-paper px-5 py-24 md:px-8 md:py-36" id="manifest">
+      <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.4fr]">
+        <p class="reveal text-sm font-extrabold uppercase text-cyan">Måten vi arbeider på</p>
+        <div>
+          <h2 class="manifest-text font-display text-[clamp(2.6rem,6vw,6.9rem)] font-bold leading-[0.98]" aria-label="Vi bygger løsninger som tåler hverdagen — tydelig arkitektur, trygg drift og programvare folk faktisk bruker">
+            Vi bygger løsninger som tåler hverdagen — tydelig arkitektur, trygg drift og programvare folk faktisk bruker.
+          </h2>
+          <p class="reveal mt-8 max-w-2xl text-lg leading-8 text-ink/68">Vi hjelper norske virksomheter med å gå fra uklare behov til solide digitale tjenester. Rådgivning, utvikling og hosting — levert samlet, slik at teknologien henger sammen fra første dag til stabil drift.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper px-5 pb-24 md:px-8 md:pb-36" id="tjenester">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <h2 class="reveal font-display text-[clamp(2.4rem,5vw,5.8rem)] font-bold leading-none">Fra retning til drift</h2>
+          <p class="reveal max-w-md text-base leading-7 text-ink/66">Én partner for selskaper som vil ha fremdrift uten å miste kontrollen over egne systemer.</p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="service-card reveal group rounded-[1.6rem] p-6">
+            <svg class="service-illustration service-graphic mb-12" viewBox="0 0 320 160" aria-hidden="true">
+              <defs>
+                <linearGradient id="c01-needle" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0" stop-color="#17B8D0"/>
+                  <stop offset="1" stop-color="#17B8D0" stop-opacity="0.25"/>
+                </linearGradient>
+              </defs>
+              <!-- Outer decorative ring -->
+              <circle cx="160" cy="80" r="60" fill="none" stroke="#071011" stroke-width="0.8" stroke-opacity="0.07"/>
+              <!-- Main compass body -->
+              <circle cx="160" cy="80" r="50" fill="white" fill-opacity="0.78" stroke="#17B8D0" stroke-width="1.8" stroke-opacity="0.32"/>
+              <!-- Inner ring -->
+              <circle cx="160" cy="80" r="34" fill="none" stroke="#071011" stroke-width="0.8" stroke-opacity="0.07"/>
+              <!-- Cardinal marks -->
+              <rect x="158" y="24" width="4" height="13" rx="2" fill="#17B8D0"/>
+              <rect x="158" y="123" width="4" height="13" rx="2" fill="#071011" fill-opacity="0.18"/>
+              <rect x="101" y="78" width="13" height="4" rx="2" fill="#071011" fill-opacity="0.14"/>
+              <rect x="206" y="78" width="13" height="4" rx="2" fill="#071011" fill-opacity="0.14"/>
+              <!-- Diagonal ticks -->
+              <line x1="123" y1="47" x2="128" y2="52" stroke="#071011" stroke-width="1.2" stroke-opacity="0.12"/>
+              <line x1="197" y1="47" x2="192" y2="52" stroke="#071011" stroke-width="1.2" stroke-opacity="0.12"/>
+              <line x1="123" y1="113" x2="128" y2="108" stroke="#071011" stroke-width="1.2" stroke-opacity="0.12"/>
+              <line x1="197" y1="113" x2="192" y2="108" stroke="#071011" stroke-width="1.2" stroke-opacity="0.12"/>
+              <!-- North needle (cyan) -->
+              <path d="M160 80 L155 80 L160 34 L165 80 Z" fill="url(#c01-needle)"/>
+              <path d="M160 80 L160 34 L162 78 Z" fill="white" fill-opacity="0.22"/>
+              <!-- South needle (dark, small) -->
+              <path d="M160 80 L156 80 L160 120 L164 80 Z" fill="#071011" fill-opacity="0.18"/>
+              <!-- East / West needles (faint) -->
+              <path d="M160 77 L204 80 L160 83 Z" fill="#071011" fill-opacity="0.09"/>
+              <path d="M160 77 L116 80 L160 83 Z" fill="#071011" fill-opacity="0.09"/>
+              <!-- Center pin -->
+              <circle cx="160" cy="80" r="9" fill="white" stroke="#17B8D0" stroke-width="2.2"/>
+              <circle cx="160" cy="80" r="4.5" fill="#17B8D0"/>
+            </svg>
+            <p class="mb-3 text-sm font-extrabold uppercase text-cyan">01</p>
+            <h3 class="text-2xl font-extrabold">Rådgivning</h3>
+            <p class="mt-4 leading-7 text-ink/66">Vi hjelper deg å oversette behov og forretningsmål til tekniske valg du kan forklare, forsvare og stå inne for.</p>
+          </article>
+
+          <article class="service-card reveal group rounded-[1.6rem] p-6">
+            <svg class="service-illustration service-graphic mb-12" viewBox="0 0 320 160" aria-hidden="true">
+              <!-- Editor window frame -->
+              <rect x="30" y="18" width="260" height="132" rx="14" fill="white" fill-opacity="0.78" stroke="#071011" stroke-width="1" stroke-opacity="0.1"/>
+              <!-- Title bar -->
+              <rect x="30" y="18" width="260" height="28" rx="14" fill="#071011" fill-opacity="0.05"/>
+              <rect x="30" y="33" width="260" height="13" fill="#071011" fill-opacity="0.05"/>
+              <!-- Window controls -->
+              <circle cx="52" cy="32" r="5.5" fill="#9DBB43" opacity="0.8"/>
+              <circle cx="68" cy="32" r="5.5" fill="#17B8D0" opacity="0.8"/>
+              <circle cx="84" cy="32" r="5.5" fill="#58BEAE" opacity="0.8"/>
+              <!-- Filename tab -->
+              <rect x="108" y="24" width="70" height="16" rx="4" fill="white" fill-opacity="0.6" stroke="#17B8D0" stroke-width="1" stroke-opacity="0.3"/>
+              <rect x="116" y="29" width="36" height="5" rx="2.5" fill="#17B8D0" fill-opacity="0.45"/>
+              <!-- Line numbers gutter -->
+              <rect x="30" y="46" width="28" height="104" fill="#071011" fill-opacity="0.04"/>
+              <rect x="42" y="58" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.18"/>
+              <rect x="42" y="70" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.12"/>
+              <rect x="42" y="82" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.12"/>
+              <rect x="42" y="94" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.12"/>
+              <rect x="42" y="106" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.12"/>
+              <rect x="42" y="118" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.1"/>
+              <rect x="42" y="130" width="8" height="4" rx="2" fill="#071011" fill-opacity="0.1"/>
+              <!-- Code line 1: function keyword + name -->
+              <rect x="68" y="56" width="32" height="6" rx="3" fill="#17B8D0" fill-opacity="0.6"/>
+              <rect x="106" y="56" width="52" height="6" rx="3" fill="#9DBB43" fill-opacity="0.55"/>
+              <rect x="164" y="56" width="10" height="6" rx="3" fill="#071011" fill-opacity="0.2"/>
+              <!-- Code line 2: indented — property -->
+              <rect x="80" y="70" width="22" height="5" rx="2.5" fill="#58BEAE" fill-opacity="0.6"/>
+              <rect x="108" y="70" width="6" height="5" rx="2.5" fill="#071011" fill-opacity="0.2"/>
+              <rect x="120" y="70" width="64" height="5" rx="2.5" fill="#9DBB43" fill-opacity="0.45"/>
+              <!-- Code line 3: indented — return -->
+              <rect x="80" y="83" width="30" height="5" rx="2.5" fill="#17B8D0" fill-opacity="0.45"/>
+              <rect x="116" y="83" width="80" height="5" rx="2.5" fill="#071011" fill-opacity="0.12"/>
+              <!-- Code line 4: closing brace -->
+              <rect x="68" y="96" width="10" height="6" rx="3" fill="#071011" fill-opacity="0.22"/>
+              <!-- Code line 5: blank spacer, then next fn -->
+              <rect x="68" y="109" width="30" height="5" rx="2.5" fill="#17B8D0" fill-opacity="0.5"/>
+              <rect x="104" y="109" width="44" height="5" rx="2.5" fill="#58BEAE" fill-opacity="0.45"/>
+              <rect x="154" y="109" width="8" height="5" rx="2.5" fill="#071011" fill-opacity="0.18"/>
+              <!-- Code line 6 -->
+              <rect x="80" y="122" width="110" height="5" rx="2.5" fill="#071011" fill-opacity="0.09"/>
+              <!-- Cursor -->
+              <rect x="68" y="134" width="2" height="12" rx="1" fill="#17B8D0" opacity="0.75"/>
+              <!-- Right mini-map -->
+              <rect x="248" y="46" width="32" height="104" rx="6" fill="#071011" fill-opacity="0.03"/>
+              <rect x="252" y="54" width="22" height="3" rx="1.5" fill="#17B8D0" fill-opacity="0.3"/>
+              <rect x="252" y="60" width="16" height="2" rx="1" fill="#071011" fill-opacity="0.1"/>
+              <rect x="252" y="65" width="19" height="2" rx="1" fill="#9DBB43" fill-opacity="0.3"/>
+              <rect x="252" y="70" width="12" height="2" rx="1" fill="#071011" fill-opacity="0.08"/>
+              <rect x="252" y="80" width="20" height="3" rx="1.5" fill="#58BEAE" fill-opacity="0.28"/>
+              <rect x="252" y="86" width="14" height="2" rx="1" fill="#071011" fill-opacity="0.08"/>
+            </svg>
+            <p class="mb-3 text-sm font-extrabold uppercase text-cyan">02</p>
+            <h3 class="text-2xl font-extrabold">Programvare</h3>
+            <p class="mt-4 leading-7 text-ink/66">Vi utvikler webapplikasjoner, integrasjoner og interne verktøy — med tydelige grensesnitt og kode som er lett å vedlikeholde.</p>
+          </article>
+
+          <article class="service-card reveal group rounded-[1.6rem] p-6">
+            <svg class="service-illustration service-graphic mb-12" viewBox="0 0 320 160" aria-hidden="true">
+              <defs>
+                <linearGradient id="c03-uptime" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0" stop-color="#9DBB43"/>
+                  <stop offset="0.75" stop-color="#17B8D0"/>
+                  <stop offset="1" stop-color="#17B8D0" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <!-- Server rack unit -->
+              <rect x="28" y="22" width="118" height="120" rx="12" fill="white" fill-opacity="0.82" stroke="#071011" stroke-width="1" stroke-opacity="0.12"/>
+              <!-- Rack label bar -->
+              <rect x="28" y="22" width="118" height="18" rx="12" fill="#071011" fill-opacity="0.05"/>
+              <rect x="28" y="32" width="118" height="8" fill="#071011" fill-opacity="0.05"/>
+              <rect x="38" y="27" width="28" height="6" rx="3" fill="#071011" fill-opacity="0.15"/>
+              <!-- Server row 1 (active) -->
+              <rect x="38" y="50" width="98" height="24" rx="7" fill="#17B8D0" fill-opacity="0.07" stroke="#17B8D0" stroke-width="1.5" stroke-opacity="0.4"/>
+              <rect x="46" y="58" width="52" height="8" rx="4" fill="#17B8D0" fill-opacity="0.38"/>
+              <circle cx="118" cy="60" r="5" fill="#17B8D0"/>
+              <circle cx="118" cy="68" r="3.5" fill="#17B8D0" fill-opacity="0.35"/>
+              <!-- Server row 2 -->
+              <rect x="38" y="80" width="98" height="24" rx="7" fill="#071011" fill-opacity="0.04" stroke="#071011" stroke-width="0.8" stroke-opacity="0.1"/>
+              <rect x="46" y="88" width="52" height="8" rx="4" fill="#9DBB43" fill-opacity="0.35"/>
+              <circle cx="118" cy="90" r="5" fill="#9DBB43" opacity="0.7"/>
+              <circle cx="118" cy="98" r="3.5" fill="#9DBB43" fill-opacity="0.3"/>
+              <!-- Server row 3 -->
+              <rect x="38" y="110" width="98" height="24" rx="7" fill="#071011" fill-opacity="0.04" stroke="#071011" stroke-width="0.8" stroke-opacity="0.1"/>
+              <rect x="46" y="118" width="52" height="8" rx="4" fill="#58BEAE" fill-opacity="0.35"/>
+              <circle cx="118" cy="120" r="5" fill="#58BEAE" opacity="0.7"/>
+              <circle cx="118" cy="128" r="3.5" fill="#58BEAE" fill-opacity="0.3"/>
+              <!-- Uptime monitor panel -->
+              <rect x="160" y="22" width="134" height="120" rx="12" fill="white" fill-opacity="0.82" stroke="#071011" stroke-width="1" stroke-opacity="0.1"/>
+              <!-- Panel header -->
+              <rect x="170" y="34" width="52" height="7" rx="3.5" fill="#17B8D0" fill-opacity="0.5"/>
+              <rect x="170" y="46" width="36" height="4" rx="2" fill="#071011" fill-opacity="0.1"/>
+              <!-- Uptime % bar track -->
+              <rect x="170" y="58" width="114" height="7" rx="3.5" fill="#071011" fill-opacity="0.06"/>
+              <rect x="170" y="58" width="108" height="7" rx="3.5" fill="url(#c03-uptime)"/>
+              <!-- Graph area -->
+              <rect x="170" y="74" width="114" height="58" rx="8" fill="#071011" fill-opacity="0.03" stroke="#071011" stroke-width="0.6" stroke-opacity="0.07"/>
+              <!-- Graph baseline -->
+              <line x1="175" y1="126" x2="278" y2="126" stroke="#071011" stroke-width="0.8" stroke-opacity="0.1"/>
+              <!-- Uptime sparkline -->
+              <polyline points="176,118 188,106 200,110 212,96 222,98 232,90 242,94 252,86 262,88 272,84 278,86"
+                        fill="none" stroke="#17B8D0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Fill under sparkline -->
+              <polygon points="176,126 176,118 188,106 200,110 212,96 222,98 232,90 242,94 252,86 262,88 272,84 278,86 278,126"
+                       fill="#17B8D0" fill-opacity="0.07"/>
+              <!-- Stat labels -->
+              <rect x="170" y="138" width="38" height="6" rx="3" fill="#9DBB43" fill-opacity="0.45"/>
+              <rect x="214" y="140" width="64" height="4" rx="2" fill="#071011" fill-opacity="0.1"/>
+            </svg>
+            <p class="mb-3 text-sm font-extrabold uppercase text-cyan">03</p>
+            <h3 class="text-2xl font-extrabold">Hosting og drift</h3>
+            <p class="mt-4 leading-7 text-ink/66">Vi setter opp og drifter miljøer som skal være raske, stabile og enkle å forstå for alle som er involvert.</p>
+          </article>
+
+          <article class="service-card reveal group rounded-[1.6rem] p-6">
+            <svg class="service-illustration service-graphic mb-12" viewBox="0 0 320 160" aria-hidden="true">
+              <defs>
+                <linearGradient id="c04-rocket" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0" stop-color="#17B8D0"/>
+                  <stop offset="1" stop-color="#58BEAE"/>
+                </linearGradient>
+                <radialGradient id="c04-glow" cx="50%" cy="55%" r="45%">
+                  <stop offset="0" stop-color="#17B8D0" stop-opacity="0.2"/>
+                  <stop offset="1" stop-color="#17B8D0" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- Ambient glow -->
+              <ellipse cx="160" cy="90" rx="52" ry="48" fill="url(#c04-glow)"/>
+              <!-- Stars -->
+              <circle cx="82"  cy="28" r="3"   fill="#9DBB43" opacity="0.65"/>
+              <circle cx="70"  cy="58" r="2"   fill="#17B8D0" opacity="0.45"/>
+              <circle cx="240" cy="32" r="3.5" fill="#17B8D0" opacity="0.55"/>
+              <circle cx="254" cy="60" r="2"   fill="#9DBB43" opacity="0.4"/>
+              <circle cx="100" cy="44" r="1.8" fill="#58BEAE" opacity="0.4"/>
+              <circle cx="228" cy="50" r="1.8" fill="#58BEAE" opacity="0.4"/>
+              <!-- Exhaust flames -->
+              <path d="M146 128 Q141 140 136 152" stroke="#9DBB43" stroke-width="3" fill="none" stroke-linecap="round" stroke-opacity="0.55"/>
+              <path d="M160 132 Q160 144 158 155" stroke="#17B8D0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-opacity="0.45"/>
+              <path d="M174 128 Q179 140 184 152" stroke="#58BEAE" stroke-width="3" fill="none" stroke-linecap="round" stroke-opacity="0.55"/>
+              <!-- Flame core -->
+              <ellipse cx="160" cy="132" rx="16" ry="8" fill="#9DBB43" fill-opacity="0.22"/>
+              <ellipse cx="160" cy="128" rx="9"  ry="6" fill="#17B8D0" fill-opacity="0.32"/>
+              <!-- Rocket body -->
+              <path d="M160 22 C146 22 138 46 136 72 L136 120 C136 124 140 128 144 128 L176 128 C180 128 184 124 184 120 L184 72 C182 46 174 22 160 22 Z"
+                    fill="url(#c04-rocket)"/>
+              <!-- Nose highlight -->
+              <path d="M160 22 C152 22 144 42 142 66 L160 66 Z" fill="white" fill-opacity="0.18"/>
+              <!-- Porthole window -->
+              <circle cx="160" cy="76" r="16" fill="white" fill-opacity="0.88" stroke="#17B8D0" stroke-width="1.8" stroke-opacity="0.4"/>
+              <circle cx="160" cy="76" r="10" fill="#17B8D0" fill-opacity="0.14" stroke="#17B8D0" stroke-width="1" stroke-opacity="0.3"/>
+              <circle cx="155" cy="71" r="3.5" fill="white" fill-opacity="0.55"/>
+              <!-- Left fin -->
+              <path d="M136 102 L112 122 L136 115 Z" fill="#17B8D0" fill-opacity="0.65"/>
+              <!-- Right fin -->
+              <path d="M184 102 L208 122 L184 115 Z" fill="#58BEAE" fill-opacity="0.65"/>
+            </svg>
+            <p class="mb-3 text-sm font-extrabold uppercase text-cyan">04</p>
+            <h3 class="text-2xl font-extrabold">Innovasjon</h3>
+            <p class="mt-4 leading-7 text-ink/66">Vi hjelper nye tjenester fra idé til marked — i tett samarbeid med team som trenger teknisk tyngde og tydelig retning.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-section overflow-hidden bg-mist px-5 py-24 text-ink md:px-8 md:py-32" id="arbeid">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+          <p class="reveal text-sm font-extrabold uppercase text-cyan">Produkter og initiativ</p>
+          <h2 class="reveal font-display text-[clamp(2.4rem,5vw,5.8rem)] font-bold leading-none">Bygget nært problemene de skal løse</h2>
+        </div>
+      </div>
+
+      <div class="showcase-track flex gap-5 md:gap-8">
+        <article class="showcase-panel reveal flex shrink-0 flex-col justify-between rounded-[1.8rem] p-8 md:p-10">
+          <div>
+            <div class="project-graphic mb-8 flex items-center justify-center px-8">
+  <img src="assets/skrivdet-og.png" alt="skrivDET logo" class="h-28 w-auto object-contain">
+</div>
+            <p class="mb-5 text-sm font-extrabold uppercase text-cyan">skrivDET</p>
+            <h3 class="project-title font-display font-bold">Sikker diktering og dokumentasjon</h3>
+          </div>
+          <div class="mt-12 max-w-xl">
+            <p class="text-lg leading-8 text-ink/66">Møtereferater, diktering og dokumentasjon med norsk datasikkerhet — og full kontroll over egne data.</p>
+            <a href="https://skrivdet.no" target="_blank" rel="noopener" class="motion-link mt-8 font-bold text-ink">Besøk skrivdet.no</a>
+          </div>
+        </article>
+
+        <article class="showcase-panel reveal flex shrink-0 flex-col justify-between rounded-[1.8rem] p-8 md:p-10">
+          <div>
+            <div class="project-graphic mb-8 flex items-center justify-center px-10">
+  <img src="assets/xentracker-favicon.png" alt="Xentracker" class="h-10 w-auto"
+    style="filter: brightness(0) contrast(1);">
+</div>
+            <p class="mb-5 text-sm font-extrabold uppercase text-cyan">Xentracker</p>
+            <h3 class="project-title font-display font-bold">Full oversikt over programvare og lisenser</h3>
+          </div>
+          <div class="mt-12 max-w-xl">
+            <p class="text-lg leading-8 text-ink/66">Hjelper IT-team med å administrere programvare, optimalisere lisenser og avdekke skygge-IT — uten overvåking av enkeltbrukere.</p>
+            <a href="https://xentracker.com" target="_blank" rel="noopener" class="motion-link mt-8 font-bold text-ink">Besøk xentracker.com</a>
+          </div>
+        </article>
+
+        <article class="showcase-panel reveal flex shrink-0 flex-col justify-between rounded-[1.8rem] p-8 md:p-10">
+          <div>
+            <div class="project-graphic mb-8 flex items-center justify-center px-10">
+  <img src="assets/seaqloud-logo.png" alt="SeaQloud" class="h-10 w-auto">
+</div>
+            <p class="mb-5 text-sm font-extrabold uppercase text-cyan">SeaQloud</p>
+            <h3 class="project-title font-display font-bold">Innovasjon med drift i ryggen</h3>
+          </div>
+          <div class="mt-12 max-w-xl">
+            <p class="text-lg leading-8 text-ink/66">Tidligere Tialta og Seacloud — en langsiktig innovasjonssatsing der produkt, teknologi og marked er bygget i tett samarbeid.</p>
+            <a href="https://en.seaqloud.no" target="_blank" rel="noopener" class="motion-link mt-8 font-bold text-ink">Besøk SeaQloud</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="bg-paper px-5 py-24 md:px-8 md:py-36">
+      <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.9fr_1.2fr] md:items-center">
+        <div class="reveal relative min-h-80 overflow-hidden rounded-[1.8rem] border border-ink/10 bg-white p-10 text-ink shadow-2xl shadow-ink/5">
+          <img src="assets/proof-bg.png" alt="Kvasetech symbol" class="proof-image absolute -right-24 -top-24 w-96 opacity-45" loading="lazy" decoding="async">
+          <div class="relative z-10">
+            <p class="text-sm font-extrabold uppercase text-cyan">Tillit i praksis</p>
+            <p class="mt-28 text-5xl font-black">Ryddig. Stabilt. Forklarbart</p>
+          </div>
+        </div>
+        <blockquote class="reveal">
+          <p class="font-display text-[clamp(2.3rem,5vw,5.5rem)] font-bold leading-[1.02]">«Teknisk styrke og langsiktig oversikt — begge deler, ikke bare det ene.</p>
+          <footer class="mt-8 text-base font-bold uppercase text-ink/56"><cite>— Kvasetech, etter ti år med rådgivning, utvikling og drift</cite></footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="bg-[linear-gradient(135deg,#ffffff,#eaf6f3)] px-5 py-24 text-ink md:px-8 md:py-36" id="kontakt">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-12 md:grid-cols-[1.25fr_0.75fr] md:items-end">
+          <h2 class="reveal font-display text-[clamp(3rem,8vw,8.2rem)] font-bold leading-[0.94]">La oss bygge noe som varer</h2>
+        </div>
+
+        <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-16 md:items-start">
+          <div class="reveal">
+            <p class="mb-8 text-lg leading-8 text-ink/68">Har du et system som trenger modernisering, et produkt klart for markedet, eller en infrastruktur som trenger bedre styring? Vi svarer deg innen én virkedag.</p>
+            <p class="text-sm font-semibold text-ink/54">Eller send e-post direkte: <a href="mailto:post@kvasetech.no" class="text-ink underline underline-offset-2 hover:text-cyan">post@kvasetech.no</a></p>
+          </div>
+          <form class="contact-form reveal flex flex-col gap-4" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+            <input type="text" name="name" placeholder="Ditt navn" required autocomplete="name">
+            <input type="email" name="email" placeholder="E-postadresse" required autocomplete="email">
+            <textarea name="message" placeholder="Beskriv kort hva du trenger hjelp til…" required></textarea>
+            <button type="submit" class="inline-flex w-fit items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-extrabold uppercase text-paper shadow-xl shadow-ink/10 hover:bg-cyan hover:text-ink">Send melding</button>
+          </form>
+          </div>
+
+        <footer class="site-footer mt-24 flex flex-col justify-between gap-8 rounded-[1.25rem] border border-paper/12 bg-ink px-6 py-6 text-sm text-paper/72 shadow-2xl shadow-ink/10 md:flex-row md:items-center">
+          <img src="assets/logo.png" alt="Kvasetech" class="h-9 w-auto brightness-0 invert" loading="lazy" decoding="async">
+
+          <p class="text-paper/40 text-xs mt-2 md:mt-0">Kvasetech AS &nbsp;·&nbsp; Org.nr. 935 284 627 &nbsp;·&nbsp; <a class="hover:text-cyan" href="mailto:post@kvasetech.no">post@kvasetech.no</a></p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    if (!reduceMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Smooth scrolling with Lenis, wired into ScrollTrigger so pinned sections stay in sync.
+      const lenis = new Lenis({
+        duration: 1.08,
+        smoothWheel: true,
+        wheelMultiplier: 0.9
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      // Hero load reveal: moves masked headline lines upward into view with a compact stagger.
+      gsap.timeline({ defaults: { ease: 'power2.out' } })
+        .to('.hero-mask > span', { y: 0, duration: 1.05, stagger: 0.11 })
+        .from('.hero-cta', { y: 28, opacity: 0, duration: 0.8 }, '-=0.45')
+        .from('.hero-object', { y: 34, opacity: 0, duration: 0.8 }, '-=0.62');
+
+      // Standard scroll reveals: fade and slide elements up as they enter 80% of the viewport.
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        gsap.from(el, {
+          y: 40,
+          opacity: 0,
+          duration: 0.85,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 80%', once: true }
+        });
+      });
+
+      // Section curtain motion: gives major light sections a subtle horizontal opening transition.
+      gsap.utils.toArray('.section-curtain').forEach((section) => {
+        gsap.from(section, {
+          scaleX: 0.96,
+          opacity: 0.82,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: section, start: 'top 78%', once: true }
+        });
+      });
+
+      // Manifest reveal: wraps each character and brightens it in sequence while the line scrolls in.
+      document.querySelectorAll('.manifest-text').forEach((el) => {
+        const text = el.textContent.trim();
+        el.innerHTML = text.split('').map((char) => '<span class="manifest-char">' + (char === ' ' ? '&nbsp;' : char) + '</span>').join('');
+        gsap.to(el.querySelectorAll('.manifest-char'), {
+          y: 0,
+          opacity: 1,
+          stagger: 0.008,
+          duration: 0.45,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 80%', once: true }
+        });
+      });
+
+      if (isDesktop) {
+        // Hero parallax: background drifts slowly, headline moves faster, CTA stays closer to natural scroll.
+        gsap.to('.hero-bg', {
+          y: () => window.innerHeight * 0.3,
+          ease: 'none',
+          scrollTrigger: { trigger: '#top > section', start: 'top top', end: 'bottom top', scrub: true }
+        });
+        gsap.to('.hero-copy h1', {
+          y: () => -window.innerHeight * 0.2,
+          ease: 'none',
+          scrollTrigger: { trigger: '#top > section', start: 'top top', end: 'bottom top', scrub: true }
+        });
+        gsap.to('.hero-cta', {
+          y: () => -window.innerHeight * 0.08,
+          ease: 'none',
+          scrollTrigger: { trigger: '#top > section', start: 'top top', end: 'bottom top', scrub: true }
+        });
+
+        // Showcase pin: desktop turns the product panels into a horizontal scroll strip with zoom reveals.
+        const track = document.querySelector('.showcase-track');
+        const panels = gsap.utils.toArray('.showcase-panel');
+        const horizontalTween = gsap.to(track, {
+          x: () => -(track.scrollWidth - window.innerWidth + 40),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.showcase-section',
+            start: 'top top',
+            end: () => '+=' + Math.max(track.scrollWidth - window.innerWidth, 900),
+            scrub: true,
+            pin: true,
+            invalidateOnRefresh: true
+          }
+        });
+        panels.forEach((panel) => {
+          gsap.to(panel, {
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: panel, containerAnimation: horizontalTween, start: 'left 82%', end: 'left 45%', scrub: true }
+          });
+        });
+
+        // Social proof parallax: the symbol moves at a restrained depth behind the quote card.
+        gsap.to('.proof-image', {
+          y: -60,
+          ease: 'none',
+          scrollTrigger: { trigger: '.proof-image', start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+
+        // Mouse tracking: service cards and selected illustrations tilt and shift up to 15px toward the pointer.
+        document.querySelectorAll('.service-card, .mouse-depth').forEach((el) => {
+          let tx = 0, ty = 0, rx = 0, ry = 0;
+          let cx = 0, cy = 0, crx = 0, cry = 0;
+          const animate = () => {
+            cx += (tx - cx) * 0.1;
+            cy += (ty - cy) * 0.1;
+            crx += (rx - crx) * 0.1;
+            cry += (ry - cry) * 0.1;
+            el.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) rotateX(' + crx + 'deg) rotateY(' + cry + 'deg)';
+            requestAnimationFrame(animate);
+          };
+          animate();
+          el.addEventListener('mousemove', (event) => {
+            const rect = el.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+            tx = x * 15;
+            ty = y * 15;
+            rx = y * -5;
+            ry = x * 5;
+          });
+          el.addEventListener('mouseleave', () => { tx = 0; ty = 0; rx = 0; ry = 0; });
+        });
+      }
+    }
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.setAttribute('aria-hidden', String(isOpen));
+      menuBtn.classList.toggle('menu-open', !isOpen);
+      mobileMenu.classList.toggle('mobile-menu-open', !isOpen);
+      mobileMenu.classList.toggle('mobile-menu-closed', isOpen);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        menuBtn.classList.remove('menu-open');
+        mobileMenu.classList.remove('mobile-menu-open');
+        mobileMenu.classList.add('mobile-menu-closed');
+      });
+    });
+  </script>
+</body>
+</html>
