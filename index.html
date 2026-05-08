@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
-  <title>Kvasetech AS | Rådgivning, programvare og hosting</title>
+  <meta name="description" content="Kvasetech AS hjelper norske virksomheter med rådgivning, programvareutvikling og drift — fra idé og behovsavklaring til stabile digitale tjenester.">
+  <title>Kvasetech AS | Rådgivning, utvikling og drift</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kvasetech.no">
-  <meta property="og:title" content="Kvasetech AS | Rådgivning, programvare og hosting">
-  <meta property="og:description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
+  <meta property="og:title" content="Kvasetech AS | Rådgivning, utvikling og drift">
+  <meta property="og:description" content="Kvasetech AS hjelper norske virksomheter med rådgivning, programvareutvikling og drift — fra idé og behovsavklaring til stabile digitale tjenester.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kvasetech AS | Rådgivning, programvare og hosting">
-  <meta name="twitter:description" content="Kvasetech AS leverer teknologirådgivning, programvareutvikling og hosting for norske virksomheter — som én samlet partner fra idé til stabil drift.">
+  <meta name="twitter:title" content="Kvasetech AS | Rådgivning, utvikling og drift">
+  <meta name="twitter:description" content="Kvasetech AS hjelper norske virksomheter med rådgivning, programvareutvikling og drift — fra idé og behovsavklaring til stabile digitale tjenester.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -221,6 +221,27 @@
       white-space: nowrap;
     }
 
+    .manifest-section {
+      position: relative;
+      overflow: hidden;
+      background: #E7F6FA;
+    }
+    .manifest-section::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: rgba(7, 16, 17, 0.1);
+    }
+
+    .services-section {
+      position: relative;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(23, 184, 208, 0.2), transparent 24rem),
+        radial-gradient(circle at 88% 76%, rgba(88, 190, 174, 0.18), transparent 30rem),
+        linear-gradient(180deg, #dff2f0 0%, #eefaf7 100%);
+    }
+
     .reveal, .section-curtain { will-change: transform, opacity; }
     .section-curtain { transform-origin: left center; }
 
@@ -288,9 +309,9 @@
     "name": "Kvasetech AS",
     "url": "https://kvasetech.no",
     "email": "post@kvasetech.no",
-    "description": "Kvasetech AS leverer rådgivning, programvareutvikling, hosting og produktinnovasjon for virksomheter som vil eie teknologien sin.",
+    "description": "Kvasetech AS leverer rådgivning, programvareutvikling, drift og produktinnovasjon for virksomheter som vil eie teknologien sin.",
     "areaServed": "NO",
-    "serviceType": ["Teknologirådgivning", "Programvareutvikling", "Hosting og drift", "Produktinnovasjon"]
+    "serviceType": ["Teknologirådgivning", "Programvareutvikling", "Drift og infrastruktur", "Produktinnovasjon"]
   }
   </script>
 </head>
@@ -330,12 +351,12 @@
           <p class="reveal mb-6 text-sm font-bold uppercase text-cyan">Rådgivning, utvikling og drift</p>
           <h1 class="font-display text-[clamp(2.4rem,4.6vw,5.4rem)] font-bold leading-[1.0] text-ink">
             <span class="hero-mask"><span>Teknologi som</span></span>
-            <span class="hero-mask"><span>gjør arbeidet</span></span>
-            <span class="hero-mask"><span>enklere å eie</span></span>
+            <span class="hero-mask"><span>er enklere</span></span>
+            <span class="hero-mask"><span>å eie</span></span>
           </h1>
           <div class="hero-cta mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a href="#kontakt" class="inline-flex w-fit items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-extrabold uppercase text-ink shadow-lg shadow-cyan/20 hover:bg-leaf">Kontakt oss</a>
-            <a href="#arbeid" class="motion-link text-sm font-bold uppercase text-ink/76">Se produkter</a>
+            <a href="#arbeid" class="motion-link text-sm font-bold uppercase text-ink/76">Se portefølje</a>
           </div>
         </div>
 
@@ -347,23 +368,23 @@
       </div>
     </section>
 
-    <section class="section-curtain bg-paper px-5 py-24 md:px-8 md:py-36" id="manifest">
+    <section class="manifest-section section-curtain px-5 py-24 md:px-8 md:py-36" id="manifest">
       <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.4fr]">
         <p class="reveal text-sm font-extrabold uppercase text-cyan">Måten vi arbeider på</p>
         <div>
           <h2 class="manifest-text font-display text-[clamp(2.6rem,6vw,6.9rem)] font-bold leading-[0.98]" aria-label="Klare valg. Solid kode. Trygg drift.">
             Klare valg. Solid kode. Trygg drift.
           </h2>
-          <p class="reveal mt-8 max-w-2xl text-lg leading-8 text-ink/68">Vi hjelper norske virksomheter fra uklare behov til digitale tjenester som er enkle å forstå, videreutvikle og drifte.</p>
+          <p class="reveal mt-8 max-w-2xl text-lg leading-8 text-ink/68">Vi hjelper norske virksomheter med å gå fra uklare behov til digitale tjenester som er enkle å forstå, videreutvikle og drifte.</p>
         </div>
       </div>
     </section>
 
-    <section class="bg-paper px-5 pb-24 md:px-8 md:pb-36" id="tjenester">
+    <section class="services-section px-5 py-24 md:px-8 md:py-36" id="tjenester">
       <div class="mx-auto max-w-7xl">
         <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 class="reveal font-display text-[clamp(2.4rem,5vw,5.8rem)] font-bold leading-none">Fra retning til drift</h2>
-          <p class="reveal max-w-md text-base leading-7 text-ink/66">Én partner for selskaper som vil ha fremdrift uten å miste kontrollen over egne systemer.</p>
+          <p class="reveal max-w-md text-base leading-7 text-ink/66">Én partner for virksomheter som vil ha fremdrift uten å miste kontrollen over egne systemer.</p>
         </div>
 
         <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -405,7 +426,7 @@
             </svg>
             <p class="mb-3 text-sm font-extrabold uppercase text-cyan">01</p>
             <h3 class="text-2xl font-extrabold">Rådgivning</h3>
-            <p class="mt-4 leading-7 text-ink/66">Vi hjelper deg å oversette behov og forretningsmål til tekniske valg du kan forklare, forsvare og stå inne for.</p>
+            <p class="mt-4 leading-7 text-ink/66">Vi hjelper deg å oversette behov og forretningsmål til tekniske valg du kan forklare, forsvare og leve godt med over tid.</p>
           </article>
 
           <article class="service-card reveal group rounded-[1.6rem] p-6">
@@ -463,7 +484,7 @@
             </svg>
             <p class="mb-3 text-sm font-extrabold uppercase text-cyan">02</p>
             <h3 class="text-2xl font-extrabold">Programvare</h3>
-            <p class="mt-4 leading-7 text-ink/66">Vi utvikler webapplikasjoner, integrasjoner og interne verktøy — med tydelige grensesnitt og kode som er lett å vedlikeholde.</p>
+            <p class="mt-4 leading-7 text-ink/66">Vi utvikler nettbaserte applikasjoner, integrasjoner og interne verktøy — med tydelige grensesnitt og kode som er lett å vedlikeholde.</p>
           </article>
 
           <article class="service-card reveal group rounded-[1.6rem] p-6">
@@ -519,8 +540,8 @@
               <rect x="214" y="140" width="64" height="4" rx="2" fill="#071011" fill-opacity="0.1"/>
             </svg>
             <p class="mb-3 text-sm font-extrabold uppercase text-cyan">03</p>
-            <h3 class="text-2xl font-extrabold">Hosting og drift</h3>
-            <p class="mt-4 leading-7 text-ink/66">Vi setter opp og drifter miljøer som skal være raske, stabile og enkle å forstå for alle som er involvert.</p>
+            <h3 class="text-2xl font-extrabold">Drift og infrastruktur</h3>
+            <p class="mt-4 leading-7 text-ink/66">Vi setter opp og drifter miljøer som er raske, stabile og enkle å forstå for alle som er involvert.</p>
           </article>
 
           <article class="service-card reveal group rounded-[1.6rem] p-6">
@@ -567,7 +588,7 @@
             </svg>
             <p class="mb-3 text-sm font-extrabold uppercase text-cyan">04</p>
             <h3 class="text-2xl font-extrabold">Innovasjon</h3>
-            <p class="mt-4 leading-7 text-ink/66">Vi hjelper nye tjenester fra idé til marked — i tett samarbeid med team som trenger teknisk tyngde og tydelig retning.</p>
+            <p class="mt-4 leading-7 text-ink/66">Vi hjelper nye tjenester fra idé til marked — i tett samarbeid med miljøer som trenger teknisk tyngde og tydelig retning.</p>
           </article>
         </div>
       </div>
@@ -576,8 +597,8 @@
     <section class="showcase-section overflow-hidden bg-mist px-5 py-24 text-ink md:px-8 md:py-32" id="arbeid">
       <div class="mx-auto max-w-7xl">
         <div class="mb-12 grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-          <p class="reveal text-sm font-extrabold uppercase text-cyan">Produkter og initiativ</p>
-          <h2 class="reveal font-display text-[clamp(2.4rem,5vw,5.8rem)] font-bold leading-none">Bygget nært problemene de skal løse</h2>
+          <p class="reveal text-sm font-extrabold uppercase text-cyan">Portefølje</p>
+          <h2 class="reveal font-display text-[clamp(2.4rem,5vw,5.8rem)] font-bold leading-none">Bygget tett på problemene som skal løses</h2>
         </div>
       </div>
 
@@ -606,7 +627,7 @@
             <h3 class="project-title font-display font-bold">Full oversikt over programvare og lisenser</h3>
           </div>
           <div class="mt-12 max-w-xl">
-            <p class="text-lg leading-8 text-ink/66">Hjelper IT-team med å administrere programvare, optimalisere lisenser og avdekke skygge-IT — uten overvåking av enkeltbrukere.</p>
+            <p class="text-lg leading-8 text-ink/66">Hjelper IT-avdelinger med å administrere programvare, optimalisere lisenser og avdekke skygge-IT — uten overvåking av enkeltbrukere.</p>
             <a href="https://xentracker.com" target="_blank" rel="noopener" class="motion-link mt-8 font-bold text-ink">Besøk xentracker.com</a>
           </div>
         </article>
@@ -620,7 +641,7 @@
             <h3 class="project-title font-display font-bold">Innovasjon med drift i ryggen</h3>
           </div>
           <div class="mt-12 max-w-xl">
-            <p class="text-lg leading-8 text-ink/66">Tidligere Tialta og Seacloud — en langsiktig innovasjonssatsing der produkt, teknologi og marked er bygget i tett samarbeid.</p>
+            <p class="text-lg leading-8 text-ink/66">Tidligere Tialta og SeaQloud — en langsiktig innovasjonssatsing der produkt, teknologi og marked er utviklet i tett samarbeid.</p>
             <a href="https://en.seaqloud.no" target="_blank" rel="noopener" class="motion-link mt-8 font-bold text-ink">Besøk SeaQloud</a>
           </div>
         </article>
@@ -638,7 +659,7 @@
           </div>
         </div>
         <blockquote class="reveal">
-          <p class="font-display text-[clamp(2.3rem,5vw,5.5rem)] font-bold leading-[1.02]">«Teknisk styrke og langsiktig oversikt — begge deler, ikke bare det ene.</p>
+          <p class="font-display text-[clamp(2.3rem,5vw,5.5rem)] font-bold leading-[1.02]">«Teknisk styrke og langsiktig oversikt — begge deler, ikke bare det ene.»</p>
           <footer class="mt-8 text-base font-bold uppercase text-ink/56"><cite>— Kvasetech, etter ti år med rådgivning, utvikling og drift</cite></footer>
         </blockquote>
       </div>
@@ -652,7 +673,7 @@
 
         <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-16 md:items-start">
           <div class="reveal">
-            <p class="mb-8 text-lg leading-8 text-ink/68">Har du et system som trenger modernisering, et produkt klart for markedet, eller en infrastruktur som trenger bedre styring? Vi svarer deg innen én virkedag.</p>
+            <p class="mb-8 text-lg leading-8 text-ink/68">Har du et system som trenger modernisering, et produkt som skal ut i markedet, eller en infrastruktur som trenger bedre styring? Vi svarer deg innen én virkedag.</p>
             <p class="text-sm font-semibold text-ink/54">Eller send e-post direkte: <a href="mailto:post@kvasetech.no" class="text-ink underline underline-offset-2 hover:text-cyan">post@kvasetech.no</a></p>
           </div>
           <form class="contact-form reveal flex flex-col gap-4" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
