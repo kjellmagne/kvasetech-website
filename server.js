@@ -45,6 +45,9 @@ function createTransport() {
     port: Number(process.env.SMTP_PORT || 25),
     secure: process.env.SMTP_SECURE === 'true',
     requireTLS: process.env.SMTP_REQUIRE_TLS === 'true',
+    tls: {
+      servername: process.env.SMTP_SERVERNAME || 'email.kvasetech.com'
+    },
     auth: user || pass ? { user, pass } : undefined
   });
 }
