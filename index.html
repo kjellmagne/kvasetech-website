@@ -7,7 +7,7 @@
   <title>Kvasetech AS | Rådgivning, utvikling og drift</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kvasetech.no">
+  <meta property="og:url" content="https://kvasetech.com">
   <meta property="og:title" content="Kvasetech AS | Rådgivning, utvikling og drift">
   <meta property="og:description" content="Kvasetech AS hjelper norske virksomheter med rådgivning, programvareutvikling og drift — fra idé og behovsavklaring til stabile digitale tjenester.">
   <meta name="twitter:card" content="summary_large_image">
@@ -242,6 +242,49 @@
         linear-gradient(180deg, #dff2f0 0%, #eefaf7 100%);
     }
 
+    .proof-card {
+      min-height: 26rem;
+      border: 1px solid rgba(7, 16, 17, 0.1);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(231, 246, 250, 0.78)),
+        radial-gradient(circle at 78% 30%, rgba(23, 184, 208, 0.2), transparent 18rem);
+      box-shadow: 0 28px 90px rgba(7, 16, 17, 0.08);
+    }
+    .proof-card::before {
+      content: '';
+      position: absolute;
+      inset: 1.25rem;
+      border: 1px solid rgba(7, 16, 17, 0.08);
+      border-radius: 1.35rem;
+      pointer-events: none;
+    }
+    .proof-mark {
+      position: absolute;
+      right: -5rem;
+      top: 50%;
+      width: min(28rem, 72%);
+      transform: translateY(-50%);
+      opacity: 0.88;
+      filter: drop-shadow(0 28px 44px rgba(23, 184, 208, 0.16));
+    }
+    .proof-word {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: rgba(7, 16, 17, 0.62);
+    }
+    .proof-word::before {
+      content: '';
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 0 0.35rem rgba(23, 184, 208, 0.12);
+    }
+
     .reveal, .section-curtain { will-change: transform, opacity; }
     .section-curtain { transform-origin: left center; }
 
@@ -254,6 +297,8 @@
       .site-footer { align-items: flex-start; flex-direction: column; }
       .site-footer-links { justify-content: flex-start; margin-left: 0; }
       .service-card { min-height: auto; }
+      .proof-card { min-height: 29rem; }
+      .proof-mark { right: -7rem; top: 38%; width: 24rem; opacity: 0.32; }
     }
 
     @media (min-width: 768px) and (max-width: 1170px) {
@@ -285,6 +330,10 @@
     .contact-form input, .contact-form textarea { width: 100%; padding: 0.875rem 1.25rem; border: 1px solid rgba(7,16,17,0.14); border-radius: 1rem; background: rgba(255,255,255,0.82); color: var(--ink); font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; }
     .contact-form input:focus, .contact-form textarea:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(23,184,208,0.18); }
     .contact-form textarea { resize: vertical; min-height: 9rem; }
+    .contact-honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+    .contact-status { min-height: 1.5rem; font-size: 0.95rem; font-weight: 700; color: rgba(7, 16, 17, 0.68); }
+    .contact-status[data-state="success"] { color: #287b4f; }
+    .contact-status[data-state="error"] { color: #a83232; }
     @keyframes hero-drift {
       0%   { transform: scale(1.06) translate(0%,    0%);    }
       33%  { transform: scale(1.10) translate(-0.9%, 0.6%);  }
@@ -307,8 +356,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Kvasetech AS",
-    "url": "https://kvasetech.no",
-    "email": "post@kvasetech.no",
+    "url": "https://kvasetech.com",
+    "email": "post@kvasetech.com",
     "description": "Kvasetech AS leverer rådgivning, programvareutvikling, drift og produktinnovasjon for virksomheter som vil eie teknologien sin.",
     "areaServed": "NO",
     "serviceType": ["Teknologirådgivning", "Programvareutvikling", "Drift og infrastruktur", "Produktinnovasjon"]
@@ -649,13 +698,20 @@
       </div>
     </section>
 
-    <section class="bg-paper px-5 py-24 md:px-8 md:py-36">
+    <section class="bg-paper px-5 py-24 md:px-8 md:py-36" id="tillit">
       <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.9fr_1.2fr] md:items-center">
-        <div class="reveal relative min-h-80 overflow-hidden rounded-[1.8rem] border border-ink/10 bg-white p-10 text-ink shadow-2xl shadow-ink/5">
-          <img src="assets/proof-bg.png" alt="Kvasetech symbol" class="proof-image absolute -right-24 -top-24 w-96 opacity-45" loading="lazy" decoding="async">
-          <div class="relative z-10">
+        <div class="proof-card reveal relative overflow-hidden rounded-[1.8rem] p-8 text-ink md:p-10">
+          <img src="assets/proof-bg.png" alt="Kvasetech symbol i punktmønster" class="proof-image proof-mark" loading="lazy" decoding="async">
+          <div class="relative z-10 flex min-h-[20rem] max-w-sm flex-col justify-between">
             <p class="text-sm font-extrabold uppercase text-cyan">Tillit i praksis</p>
-            <p class="mt-28 text-5xl font-black">Ryddig. Stabilt. Forklarbart</p>
+            <div>
+              <p class="font-display text-[clamp(2.6rem,5vw,4.8rem)] font-bold leading-[0.95]">Ryddig. Stabilt. Forklarbart.</p>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <span class="proof-word">Arkitektur</span>
+                <span class="proof-word">Drift</span>
+                <span class="proof-word">Eierskap</span>
+              </div>
+            </div>
           </div>
         </div>
         <blockquote class="reveal">
@@ -674,12 +730,14 @@
         <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-16 md:items-start">
           <div class="reveal">
             <p class="mb-8 text-lg leading-8 text-ink/68">Har du et system som trenger modernisering, et produkt som skal ut i markedet, eller en infrastruktur som trenger bedre styring? Vi svarer deg innen én virkedag.</p>
-            <p class="text-sm font-semibold text-ink/54">Eller send e-post direkte: <a href="mailto:post@kvasetech.no" class="text-ink underline underline-offset-2 hover:text-cyan">post@kvasetech.no</a></p>
+            <p class="text-sm font-semibold text-ink/54">Eller send e-post direkte: <a href="mailto:post@kvasetech.com" class="text-ink underline underline-offset-2 hover:text-cyan">post@kvasetech.com</a></p>
           </div>
-          <form class="contact-form reveal flex flex-col gap-4" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+          <form class="contact-form reveal flex flex-col gap-4" action="/api/contact" method="POST">
+            <label class="contact-honeypot" aria-hidden="true">Firma <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
             <input type="text" name="name" placeholder="Ditt navn" required autocomplete="name">
             <input type="email" name="email" placeholder="E-postadresse" required autocomplete="email">
             <textarea name="message" placeholder="Beskriv kort hva du trenger hjelp til…" required></textarea>
+            <p class="contact-status" aria-live="polite"></p>
             <button type="submit" class="inline-flex w-fit items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-extrabold uppercase text-paper shadow-xl shadow-ink/10 hover:bg-cyan hover:text-ink">Send melding</button>
           </form>
           </div>
@@ -687,7 +745,7 @@
         <footer class="site-footer mt-24 flex flex-col justify-between gap-8 rounded-[1.25rem] border border-paper/12 bg-ink px-6 py-6 text-sm text-paper/72 shadow-2xl shadow-ink/10 md:flex-row md:items-center">
           <img src="assets/logo.png" alt="Kvasetech" class="h-9 w-auto brightness-0 invert" loading="lazy" decoding="async">
 
-          <p class="text-paper/40 text-xs mt-2 md:mt-0">Kvasetech AS &nbsp;·&nbsp; Org.nr. 935 284 627 &nbsp;·&nbsp; <a class="hover:text-cyan" href="mailto:post@kvasetech.no">post@kvasetech.no</a></p>
+          <p class="text-paper/40 text-xs mt-2 md:mt-0">Kvasetech AS &nbsp;·&nbsp; Org.nr. 935 284 627 &nbsp;·&nbsp; <a class="hover:text-cyan" href="mailto:post@kvasetech.com">post@kvasetech.com</a></p>
         </footer>
       </div>
     </section>
@@ -829,6 +887,43 @@
         mobileMenu.classList.add('mobile-menu-closed');
       });
     });
+
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      const status = contactForm.querySelector('.contact-status');
+      const submit = contactForm.querySelector('button[type="submit"]');
+      contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        status.dataset.state = '';
+        status.textContent = 'Sender melding...';
+        submit.disabled = true;
+        submit.style.opacity = '0.68';
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(new FormData(contactForm))
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || !result.ok) {
+            throw new Error(result.error || 'Kunne ikke sende meldingen akkurat nå.');
+          }
+          status.dataset.state = 'success';
+          status.textContent = 'Takk, meldingen er sendt.';
+          contactForm.reset();
+        } catch (error) {
+          status.dataset.state = 'error';
+          status.textContent = error.message || 'Kunne ikke sende meldingen akkurat nå.';
+        } finally {
+          submit.disabled = false;
+          submit.style.opacity = '';
+        }
+      });
+    }
   </script>
 </body>
 </html>

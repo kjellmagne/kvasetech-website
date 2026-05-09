@@ -1,6 +1,16 @@
-FROM nginx:1.27-alpine
+FROM node:20-alpine
 
-COPY index.html /usr/share/nginx/html/index.html
-COPY assets/ /usr/share/nginx/html/assets/
+WORKDIR /app
 
-EXPOSE 80
+ENV NODE_ENV=production
+
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+COPY index.html ./index.html
+COPY server.js ./server.js
+COPY assets/ ./assets/
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
