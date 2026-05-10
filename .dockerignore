@@ -6,3 +6,5 @@ npm-debug.log
 tmp-test-results
 .env
 .env.*
+secrets.md
+.claude
